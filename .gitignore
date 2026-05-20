@@ -1,0 +1,48 @@
+# Release/package output
+dist/
+*.zip
+
+# Runtime logs and local state
+logs/
+*.log
+*.tmp
+*.bak
+*.local
+RBRPassengerStreamer/config.json
+
+# Node/Electron dependencies
+node_modules/
+RBRPassengerStreamer/node_modules/
+CloudflareRoomWorker/node_modules/
+
+# Zig/C/C++ build output
+.zig-cache/
+zig-cache/
+zig-out/
+openRBRVR/.zig-cache/
+openRBRVR/zig-out/
+openRBRVR/.git.codex-backup/
+openRBRVR/*.dll
+openRBRVR/*.pdb
+openRBRVR/*.lib
+openRBRVR/*.exp
+
+# Unity generated state
+RBRPassengerQuestUnity/Library/
+RBRPassengerQuestUnity/Temp/
+RBRPassengerQuestUnity/Obj/
+RBRPassengerQuestUnity/Build/
+RBRPassengerQuestUnity/Builds/
+RBRPassengerQuestUnity/Logs/
+RBRPassengerQuestUnity/UserSettings/
+RBRPassengerQuestUnity/MemoryCaptures/
+RBRPassengerQuestUnity/*.csproj
+RBRPassengerQuestUnity/*.sln
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vs/
+.vscode/
+*** End Patch

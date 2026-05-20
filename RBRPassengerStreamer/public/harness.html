@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RBR Passenger Harness</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Passenger Link Harness</h1>
+      <div class="actions">
+        <button id="connect">Connect harness</button>
+        <button data-kind="mappedPose" data-axis="yaw">Output yaw +20</button>
+        <button data-kind="mappedPose" data-axis="pitch">Output pitch +20</button>
+        <button data-kind="mappedPose" data-axis="roll">Output roll +20</button>
+        <button data-kind="pose" data-axis="yaw">Raw yaw +20</button>
+        <button data-kind="pose" data-axis="pitch">Raw pitch +20</button>
+        <button data-kind="pose" data-axis="roll">Raw roll +20</button>
+        <button id="zero">Zero pose</button>
+      </div>
+      <pre id="status" class="status">Waiting.</pre>
+      <pre id="config" class="status">Loading config.</pre>
+    </main>
+    <script type="module" src="/harness.js"></script>
+  </body>
+</html>

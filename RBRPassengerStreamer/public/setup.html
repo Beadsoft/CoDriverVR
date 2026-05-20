@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Passenger Device Setup</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Passenger Device Setup</h1>
+      <div class="actions">
+        <button id="refresh">Refresh devices</button>
+        <button id="enable-wifi">Enable WiFi ADB from USB</button>
+        <button id="connect-wifi">Connect WiFi target</button>
+        <button id="launch">Launch Quest viewer</button>
+      </div>
+
+      <section class="panel">
+        <h2>Configured Target</h2>
+        <pre id="current" class="status">Loading.</pre>
+      </section>
+
+      <section class="panel">
+        <h2>ADB Devices</h2>
+        <div id="devices" class="device-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>WiFi Target</h2>
+        <label>
+          Quest IP or serial
+          <input id="wifi-serial" placeholder="192.168.1.72:5555" />
+        </label>
+        <label>
+          Port
+          <input id="wifi-port" type="number" min="1" max="65535" value="5555" />
+        </label>
+      </section>
+
+      <section class="panel">
+        <h2>Passenger Camera</h2>
+        <div class="form-grid">
+          <label>X offset<input id="camera-x" type="number" step="0.01" /></label>
+          <label>Y offset<input id="camera-y" type="number" step="0.01" /></label>
+          <label>Z offset<input id="camera-z" type="number" step="0.01" /></label>
+          <label>Yaw degrees<input id="camera-yaw" type="number" step="1" /></label>
+        </div>
+        <button id="save-camera" type="button">Save passenger camera</button>
+        <p class="hint">Saved to openRBRVR.toml. Restart RBR to apply camera changes.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Quest View</h2>
+        <div class="form-grid">
+          <label>Panel width (m)<input id="panel-width" type="number" step="0.05" /></label>
+          <label>Panel height (m)<input id="panel-height" type="number" step="0.05" /></label>
+          <label>Panel distance (m)<input id="panel-distance" type="number" step="0.05" /></label>
+          <label>Vertical offset (m)<input id="panel-vertical" type="number" step="0.05" /></label>
+        </div>
+        <div class="form-grid">
+          <label>Video width<input id="video-width" type="number" step="16" /></label>
+          <label>Video height<input id="video-height" type="number" step="16" /></label>
+          <label>FPS<input id="video-fps" type="number" step="1" /></label>
+          <label>Bitrate<input id="video-bitrate" type="number" step="500000" /></label>
+        </div>
+        <div class="form-grid">
+          <label>Pose prediction (ms)<input id="pose-prediction" type="number" step="5" /></label>
+          <label>Pose smoothing<input id="pose-smoothing" type="number" min="0" max="0.95" step="0.01" /></label>
+        </div>
+        <button id="save-viewer" type="button">Save Quest/view settings</button>
+        <p class="hint">Refresh the Quest and PC streamer pages after saving.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Internet</h2>
+        <label>
+          <input id="internet-enabled" type="checkbox" />
+          Enable internet passenger rooms
+        </label>
+        <label>
+          Room server URL
+          <input id="internet-room-server" placeholder="https://rbr-passenger.example.com" />
+        </label>
+        <label>
+          <input id="internet-require-public" type="checkbox" />
+          Require public HTTPS invite URLs
+        </label>
+        <div class="actions">
+          <button id="test-internet" type="button">Test server</button>
+        </div>
+        <button id="save-internet" type="button">Save internet settings</button>
+      </section>
+
+      <section class="panel">
+        <h2>LAN Invites</h2>
+        <pre id="lan-status" class="status">Loading.</pre>
+        <button id="save-lan" type="button">Save LAN defaults</button>
+      </section>
+
+      <section class="panel">
+        <h2>Hand Tracking</h2>
+        <label>
+          <input id="hands-enabled" type="checkbox" />
+          Enable passenger hand tracking
+        </label>
+        <div class="form-grid">
+          <label>Pinch threshold (m)<input id="hands-pinch" type="number" min="0.01" max="0.12" step="0.005" /></label>
+          <label>Swipe threshold (m)<input id="hands-swipe" type="number" min="0.04" max="0.4" step="0.01" /></label>
+          <label>Debounce (ms)<input id="hands-debounce" type="number" min="100" max="2000" step="50" /></label>
+        </div>
+        <button id="save-hands" type="button">Save hand tracking</button>
+      </section>
+
+      <pre id="status" class="status">Waiting.</pre>
+    </main>
+    <script type="module" src="/setup.js"></script>
+  </body>
+</html>

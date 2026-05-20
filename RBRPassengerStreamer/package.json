@@ -1,0 +1,16 @@
+{
+  "name": "rbr-passenger-streamer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "LAN WebRTC/WebXR passenger viewer for openRBRVR PassengerVR.",
+  "type": "module",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:host": "electron electron-main.js",
+    "check": "node --check server.js && node --check electron-main.js && node --check electron-preload.cjs && node --check public/common.js && node --check public/driver-host.js && node --check public/driver-room.js && node --check public/driver-share.js && node --check public/internet-driver.js && node --check public/passenger.js && node --check public/quest.js && node --check public/streamer.js && node --check public/harness.js && node --check public/setup.js"
+  },
+  "dependencies": {
+    "electron": "^41.7.0"
+  }
+}

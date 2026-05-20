@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CoDriverVR Driver Room</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>CoDriverVR Driver Room</h1>
+      <section class="panel">
+        <p class="hint">
+          This is the automatic driver room path used by the in-game menu. LAN HTTP is lowest-friction for flat video; HTTPS LAN uses Cloudflare Tunnel for a Quest WebXR-safe invite while WebRTC still tries direct LAN for video.
+        </p>
+        <div class="actions">
+          <button id="start-tunnel" type="button">Start HTTPS LAN tunnel</button>
+          <button id="stop-tunnel" type="button">Stop tunnel</button>
+          <button id="start-secure-room" type="button">Start HTTPS LAN room</button>
+        </div>
+        <label>
+          Passenger invite
+          <input id="invite" readonly />
+        </label>
+        <div class="actions">
+          <button id="start-room" type="button">Start room</button>
+          <button id="stop-room" type="button">Stop room</button>
+          <button id="recreate-room" type="button">Recreate invite</button>
+          <button id="share-quest" type="button">Open share page on Quest</button>
+          <button id="copy-invite" type="button">Copy invite</button>
+          <a id="open-invite" class="button" href="#">Open passenger view</a>
+        </div>
+      </section>
+      <pre id="status" class="status">Loading.</pre>
+    </main>
+    <script type="module" src="/driver-room.js"></script>
+  </body>
+</html>
