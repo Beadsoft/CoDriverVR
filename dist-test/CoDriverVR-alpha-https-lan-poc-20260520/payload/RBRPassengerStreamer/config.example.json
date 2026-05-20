@@ -1,0 +1,95 @@
+{
+  "server": {
+    "streamPort": 7790,
+    "poseHost": "127.0.0.1",
+    "posePort": 7791
+  },
+  "internet": {
+    "enabled": false,
+    "roomServerUrl": "https://codrivervr-rooms.<your-account>.workers.dev",
+    "requirePublicUrl": true,
+    "driverName": "Driver"
+  },
+  "lan": {
+    "enabled": true,
+    "roomServerPort": 7790,
+    "preferAddress": "auto"
+  },
+  "secureLan": {
+    "enabled": true,
+    "tunnelUrl": "",
+    "cloudflaredPath": "bin\\cloudflared.exe",
+    "autoStartTunnel": true
+  },
+  "driverRoom": {
+    "enabled": true,
+    "autoCreateOnStreamerStart": false,
+    "defaultMode": "secure-lan",
+    "captureTarget": "auto-rbr-companion",
+    "sharePageMode": "quest-share-sheet"
+  },
+  "handTracking": {
+    "enabled": true,
+    "pinchThresholdMeters": 0.035,
+    "swipeThresholdMeters": 0.14,
+    "debounceMs": 450
+  },
+  "game": {
+    "name": "Richard Burns Rally",
+    "processNames": [
+      "RichardBurnsRally_SSE",
+      "RichardBurnsRally",
+      "RBR",
+      "RSF_Launcher"
+    ],
+    "windowTitleContains": [
+      "Richard Burns Rally",
+      "RBR",
+      "RSF"
+    ]
+  },
+  "quest": {
+    "adbPath": "adb",
+    "connectionMode": "wifi",
+    "serial": "",
+    "wifiSerial": "",
+    "wifiPort": 5555,
+    "useAdbReverse": false,
+    "launchPath": "/quest.html"
+  },
+  "viewer": {
+    "mode": "fullscreen",
+    "stereoLayout": "side-by-side",
+    "swapEyes": false,
+    "quad": {
+      "widthMeters": 1.7,
+      "heightMeters": 0.96,
+      "distanceMeters": 1.35,
+      "verticalOffsetMeters": 0
+    },
+    "flipY": false
+  },
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "frameRate": 60,
+    "maxBitrate": 8000000,
+    "preferredCodec": "H264",
+    "contentHint": "motion",
+    "degradationPreference": "maintain-framerate",
+    "scaleResolutionDownBy": 1
+  },
+  "pc": {
+    "showPreview": false
+  },
+  "pose": {
+    "sendHz": 60,
+    "predictionMs": 70,
+    "smoothing": 0.18,
+    "axisMap": {
+      "yaw": { "source": "pitch", "scale": 1, "offset": 0 },
+      "pitch": { "source": "roll", "scale": 1, "offset": 0 },
+      "roll": { "source": "yaw", "scale": 1, "offset": 0 }
+    }
+  }
+}

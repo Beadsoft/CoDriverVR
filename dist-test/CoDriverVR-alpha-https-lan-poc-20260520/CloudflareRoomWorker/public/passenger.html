@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RBR Passenger Join</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Passenger Join</h1>
+      <section class="panel">
+        <label>
+          Room password
+          <input id="password" type="password" autocomplete="current-password" />
+        </label>
+        <div class="actions">
+          <button id="join">Join room</button>
+          <button id="mic">Enable microphone</button>
+          <button id="mute" disabled>Mute mic</button>
+          <button id="vr" disabled>Enter VR</button>
+          <button id="recenter">Recenter</button>
+        </div>
+      </section>
+      <video id="remote" autoplay muted playsinline></video>
+      <audio id="remote-audio" autoplay></audio>
+      <canvas id="xr-canvas"></canvas>
+      <pre id="status" class="status">Waiting.</pre>
+    </main>
+    <script type="module" src="/passenger.js"></script>
+  </body>
+</html>

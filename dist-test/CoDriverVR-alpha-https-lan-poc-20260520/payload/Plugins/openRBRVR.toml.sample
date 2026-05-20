@@ -1,0 +1,70 @@
+debug = false
+debugMode = 0
+desktopEye = 0
+desktopWindowMode = 'vreye'
+desktopWindowOffsetX = 0
+desktopWindowOffsetY = 0
+desktopWindowSize = 100
+drawLoadingScreen = true
+horizonLockFlip = false
+horizonLockMultiplier = 1.0
+lockToHorizon = 0
+menuScene = true
+menuSize = 1.0
+multiViewRendering = false
+overlaySize = 1.0
+overlayTranslateX = 0.0
+overlayTranslateY = 0.0
+overlayTranslateZ = 0.0
+recenterAtSessionStart = true
+recenterAtStageStart = false
+renderParticles = true
+renderPauseMenu3d = true
+renderPreStage3d = false
+renderReplays3d = true
+runtime = 'steamvr'
+swapEyes = false
+
+[OpenXR]
+motionCompensation = false
+peripheralAntiAliasing = 0
+predictionDampening = 0
+quadViewRendering = false
+worldScale = 1000
+
+[PassengerVR]
+enabled = false
+cameraOffset = [-0.55, 0.02, 0.05]
+cameraYawDegrees = 0.0
+renderMode = 'stereo'
+streamHost = '0.0.0.0'
+streamPort = 7790
+posePort = 7791
+recenterKey = 'QuestMenu'
+
+[RoadbookVR]
+enabled = false
+rbrRoot = 'C:\richard burns rally'
+source = 'ngpMyPacenotes'
+lockHand = 'left'
+pageHand = 'right'
+driverVisible = true
+passengerVisible = true
+panelWidthMeters = 0.55
+panelHeightMeters = 0.38
+panelOffset = [0.04, 0.04, 0.12]
+panelTiltDegrees = [-18.0, 0.0, 0.0]
+notesPerPage = 12
+fallbackPose = 'head'
+
+# The following is a sample configuration for per-stage settings
+# [gfx.default]
+# antiAliasing = 2
+# superSampling = 2.0
+
+# [gfx.btb]
+# superSampling = 2.0
+# antiAliasing = 2
+# stages = [1121, 1122, 1065, 1018, 1019, 1009, 1032, 1033, 1002, 1023, 1010, 1093, 1094, 1012, 1014, 1092, 1091, 1036, 1037, 1020, 1112, 1038, 1039, 1115, 1104, 1040, 1025, 1116, 1088, 1055, 1056, 1057, 1058, 1026, 1069, 1110, 1080, 1105, 1070, 1079, 1108, 1072, 1073, 1067, 1075, 1098, 1071, 1074, 1082, 1119, 1096, 1076, 1016, 1017, 1008, 1077, 1013, 1068, 1084, 1042, 1043, 1095, 1100, 1059, 1015, 1083, 1011, 1028, 1124, 1029, 1120, 1062, 1117, 1111, 1085, 1060, 1103, 1109, 1101, 1099, 1086, 1097, 1027, 1045, 1061, 1118, 1066, 1087, 1021, 1046, 1114, 1047, 1048, 1106, 1107, 1049, 1081, 1102, 1078, 1050, 1113, 1053, 1089, 1090, 1005, 1030, 1031, 1054]
+# multiViewRendering = true
+# foveatedRendering = false

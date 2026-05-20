@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RBR Passenger Streamer - PC</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>PC Streamer</h1>
+      <div class="actions">
+        <button id="pattern">Use test pattern</button>
+        <button id="capture">Share RBR window</button>
+        <button id="offer" disabled>Start WebRTC offer</button>
+        <button id="toggle-preview">Hide PC preview</button>
+      </div>
+      <video id="preview" autoplay muted playsinline></video>
+      <pre id="status" class="status">Waiting.</pre>
+    </main>
+    <script type="module" src="/streamer.js"></script>
+  </body>
+</html>

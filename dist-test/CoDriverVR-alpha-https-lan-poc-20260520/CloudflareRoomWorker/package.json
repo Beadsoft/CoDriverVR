@@ -1,0 +1,15 @@
+{
+  "name": "codrivervr-cloudflare-room-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Workers signalling service for CoDriverVR internet passenger rooms.",
+  "scripts": {
+    "check": "node --check src/index.js",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^3.99.0"
+  }
+}

@@ -1,0 +1,23 @@
+name = "codrivervr-rooms"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+ROOM_RECONNECT_GRACE_SECONDS = "20"
+DEFAULT_STUN_URL = "stun:stun.l.google.com:19302"
+
+[[durable_objects.bindings]]
+name = "ROOMS"
+class_name = "RoomObject"
+
+[[durable_objects.bindings]]
+name = "ROOM_INDEX"
+class_name = "RoomIndex"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["RoomObject", "RoomIndex"]
+
+[assets]
+directory = "./public"
+binding = "ASSETS"

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Share Passenger Invite</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="share-page">
+      <h1>Share Passenger Invite</h1>
+      <section class="panel">
+        <label>
+          Passenger invite
+          <textarea id="invite" readonly rows="4"></textarea>
+        </label>
+        <div class="actions">
+          <button id="share" type="button">Share invite</button>
+          <button id="copy" type="button">Copy or select invite</button>
+          <button id="messenger" type="button">Open Messenger</button>
+          <button id="facebook" type="button">Open Facebook</button>
+          <a id="open-invite" class="button" href="#">Open invite</a>
+          <button id="close-page" type="button">Return to game</button>
+        </div>
+      </section>
+      <pre id="status" class="status">Ready.</pre>
+    </main>
+    <script type="module" src="/driver-share.js"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RBR Passenger Quest Viewer</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Quest Passenger Viewer</h1>
+      <div class="actions">
+        <button id="connect">Connect</button>
+        <button id="vr" disabled>Enter VR</button>
+        <button id="recenter">Recenter</button>
+      </div>
+      <video id="remote" autoplay muted playsinline></video>
+      <canvas id="xr-canvas"></canvas>
+      <pre id="status" class="status">Waiting.</pre>
+    </main>
+    <script type="module" src="/quest.js"></script>
+  </body>
+</html>
