@@ -51,15 +51,23 @@ async function api(path, options = {}) {
       ...(options.headers ?? {}),
     },
   });
-  const body = await response.json();
+  const text = await response.text();
+  let body = {};
+  try {
+    body = text ? JSON.parse(text) : {};
+  } catch {
+    body = { error: text || `${response.status} ${response.statusText}` };
+  }
   if (!response.ok) {
-    throw new Error(body.error ?? `${response.status} ${response.statusText}`);
+    throw new Error([body.error, body.stderr, body.stdout].filter(Boolean).join('\n') || `${response.status} ${response.statusText}`);
   }
   return body;
 }
 
 function selectedUsbSerial() {
-  return document.querySelector('input[name="device"]:checked')?.value || questConfig.serial || '';
+  const selectedSerial = document.querySelector('input[name="device"]:checked')?.value ?? '';
+  const selectedDevice = devices.find((device) => device.serial === selectedSerial);
+  return selectedDevice && !selectedDevice.isWifi ? selectedDevice.serial : questConfig.serial || '';
 }
 
 function numberFrom(input, fallback) {
@@ -119,6 +127,12 @@ function render() {
   handsDebounceInput.value = hands.debounceMs ?? 450;
 
   devicesElement.innerHTML = '';
+  if (!devices.length) {
+    const empty = document.createElement('div');
+    empty.className = 'device-row';
+    empty.textContent = 'No ADB devices found.';
+    devicesElement.append(empty);
+  }
   for (const device of devices) {
     const row = document.createElement('label');
     row.className = 'device-row';
@@ -127,11 +141,16 @@ function render() {
     radio.name = 'device';
     radio.value = device.serial;
     radio.checked = device.selected;
+    radio.addEventListener('change', () => {
+      if (radio.checked) {
+        selectDevice(device).catch((error) => setStatus(status, error.message));
+      }
+    });
     const text = document.createElement('span');
     text.textContent = `${device.serial}  ${device.state}  ${device.isWifi ? 'WiFi' : 'USB'}  ${device.details}`;
     const select = document.createElement('button');
     select.type = 'button';
-    select.textContent = device.isWifi ? 'Use WiFi' : 'Use USB';
+    select.textContent = device.isWifi ? 'Use WiFi' : 'Use USB for WiFi setup';
     select.addEventListener('click', async () => {
       await selectDevice(device);
     });
@@ -172,6 +191,10 @@ async function selectDevice(device) {
 
 async function enableWifi() {
   const usbSerial = selectedUsbSerial();
+  if (!usbSerial) {
+    setStatus(status, 'Select a USB headset first, or connect one and refresh devices.');
+    return;
+  }
   const port = Number(wifiPortInput.value || 5555);
   setStatus(status, `Enabling WiFi ADB from ${usbSerial || 'default USB device'}.`);
   const result = await api('/api/adb/enable-wifi', {

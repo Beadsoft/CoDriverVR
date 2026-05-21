@@ -144,6 +144,10 @@ function localAddresses() {
     .map((entry) => entry.address);
 }
 
+function normalizeRemoteAddress(address) {
+  return String(address ?? '').replace(/^::ffff:/, '');
+}
+
 function preferredLanAddress() {
   const preferred = config.lan?.preferAddress;
   if (preferred && preferred !== 'auto') {
@@ -405,8 +409,8 @@ function broadcastStatus() {
 }
 
 function isLocalRequest(req) {
-  const address = req.socket.remoteAddress ?? '';
-  return address === '127.0.0.1' || address === '::1' || address === '::ffff:127.0.0.1';
+  const address = normalizeRemoteAddress(req.socket.remoteAddress);
+  return address === '127.0.0.1' || address === '::1' || localAddresses().includes(address);
 }
 
 function corsHeaders() {
@@ -420,6 +424,15 @@ function corsHeaders() {
 function sendJson(res, status, value) {
   res.writeHead(status, { 'content-type': 'application/json; charset=utf-8', ...corsHeaders() });
   res.end(JSON.stringify(value, null, 2));
+}
+
+function sendErrorJson(res, status, error) {
+  sendJson(res, status, {
+    error: error?.message ?? String(error),
+    code: error?.code,
+    stdout: error?.stdout ?? '',
+    stderr: error?.stderr ?? '',
+  });
 }
 
 async function readJsonBody(req) {
@@ -1262,7 +1275,12 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (url.pathname.startsWith('/api/adb/') || url.pathname.startsWith('/api/driver-room/') || url.pathname.startsWith('/api/secure-lan/') || url.pathname === '/api/quest/select' || url.pathname === '/api/config' || url.pathname === '/api/openrbrvr/config') {
-      if (await handleLocalApi(req, res, url)) {
+      try {
+        if (await handleLocalApi(req, res, url)) {
+          return;
+        }
+      } catch (error) {
+        sendErrorJson(res, 500, error);
         return;
       }
     }
